@@ -47,4 +47,58 @@ public class JobTest {
      assertNotEquals(test_job,test_job_2);
  }
 
+ @Test
+ public void testToStringStartsAndEndsWithNewLine() {
+  Job test_toString_job = new Job("Product tester", new Employer("ACME"),
+          new Location("Desert"), new PositionType("Quality control"),
+          new CoreCompetency("Persistence"));;
+
+  String newline = System.lineSeparator();
+  assertEquals(newline+
+          "ID: " + test_toString_job.getId() + newline +
+          "Name: Product tester" + newline +
+          "Employer: ACME" + newline +
+          "Location: Desert" + newline +
+          "Position Type: Quality control" + newline +
+          "Core Competency: Persistence" + newline,test_toString_job.toString());
+
+ }
+
+ @Test
+ public void testToStringContainsCorrectLabelsAndData() {
+     Job correct_label_and_data_job = new Job("Product tester", new Employer("ACME"),
+             new Location("Desert"), new PositionType("Quality control"),
+             new CoreCompetency("Persistence"));
+  String newline = System.lineSeparator();
+
+     assertEquals(newline+
+                     "ID: " + correct_label_and_data_job.getId() + newline +
+             "Name: Product tester" + newline +
+             "Employer: ACME" + newline +
+             "Location: Desert" + newline +
+             "Position Type: Quality control" + newline +
+             "Core Competency: Persistence" + newline
+             , correct_label_and_data_job.toString());
+
+ }
+
+ @Test
+ public void testToStringHandlesEmptyField() {
+     Job testerJob = new Job("Product tester", new Employer("ACME"),
+             new Location("Desert"), new PositionType(),
+             new CoreCompetency("Persistence"));
+  String newline = System.lineSeparator();
+
+     assertEquals(newline+
+                     "ID: " + testerJob.getId() + newline +
+                     "Name: Product tester" + newline +
+                     "Employer: ACME" + newline +
+                     "Location: Desert" + newline +
+                     "Position Type: Data not available" + newline +
+                     "Core Competency: Persistence" + newline
+             , testerJob.toString());
+
+  System.out.println(testerJob);
+ }
+
 }

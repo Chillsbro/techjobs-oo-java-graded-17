@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Objects;
 
+import static java.lang.System.lineSeparator;
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -30,6 +31,13 @@ public class JobTest {
      assertTrue(testFields.getLocation() instanceof Location);
      assertTrue(testFields.getPositionType() instanceof PositionType);
      assertTrue(testFields.getCoreCompetency() instanceof CoreCompetency);
+     assertNotNull(testFields.getName());
+     assertNotNull(testFields.getEmployer());
+     assertNotNull(testFields.getLocation());
+     assertNotNull(testFields.getPositionType());
+     assertNotNull(testFields.getCoreCompetency());
+
+
 
 
 
@@ -54,6 +62,10 @@ public class JobTest {
           new CoreCompetency("Persistence"));;
 
   String newline = System.lineSeparator();
+  String firstChar = String.valueOf(test_toString_job.toString().charAt(0));
+  String lastChar = String.valueOf(test_toString_job.toString().charAt(test_toString_job.toString().length()-1));
+  assertEquals(firstChar, lineSeparator());
+  assertEquals(lastChar, lineSeparator());
   assertEquals(newline+
           "ID: " + test_toString_job.getId() + newline +
           "Name: Product tester" + newline +
